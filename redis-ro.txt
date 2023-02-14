@@ -1,0 +1,172 @@
+redis-server 
+redis-cli 
+
+
+confing get * (etc)
+
+confing set etc value
+
+
+-----------------------
+ping --> check redis server is running !
+
+> set name ali
+
+> get name 
+
+> del name family   -->    1 --> deleted
+
+> dump name         --> (serialize data)
+
+> exists name       --> check key is exists or not 
+
+> expire name 10    --> (for expire key )
+
+> setex name 10 ali
+
+> ttl name          -->  (show remain time to live)  --> -2 finished
+
+> pttl name         --> millisecond 
+
+> persists name    --> cancel ttl 
+
+> expireat key timestamp    
+
+> pexpire key milliseconds
+
+> pexpireat key  (timestamp/milliseconds)
+
+> keys pattern  (*name*,*)
+
+> randomkey     -->return random key 
+
+> rename name myname
+
+-------------------------------------
+-------------------------------------
+
+// string 
+
+> set name "ali" or ali 
+
+> get name 
+
+> getrange name 0 4 (0 -1 --> all chars)
+
+> getset name ali  -->getset name ali2  --> before val
+
+> mget name family     -->  (multi get)
+
+> setex name 20 ali ---> set and set expire time 
+
+> setnx name ali    --> set if not exists
+
+> setrange name 2 "kk"
+
+> strlen name    --> get length of name 
+
+> mset name ali family farahani
+
+> msetnx name ali family farahani   --> set if exist 
+
+> psetex name 10(millisecond) ali
+
+> setex name 10(second) ali
+
+> incr visit (100) (increament)
+
+> get visist
+
+> incrby visit 5 ( 5 step )
+
+> decr visit (decreament)
+
+> decrby visit 5 ( 5 step )
+
+> append fullname "farahani"
+
+
+-------------------------------------------
+-------------------------------------------
+
+//hashes : 
+------------
+
+> hset myhash likes 20 
+
+> hget myhash likes 
+
+> hgetall myhash 
+
+> hset myhash visitor 30
+
+> hkeys myhash 
+
+> hvals myhash 
+
+> hlen myhash 
+
+> hdel myhash likes
+
+> hexists myhash likes    --> 0 -> not exists , 1 --> exists
+
+> hincrby myhash likes 1
+
+> hmget myhash likes visitor
+
+> hmset myhash likes 20 visitor 200
+
+
+===============================================
+===============================================
+
+// lists : 
+-----------
+
+> lpush mylist itm1 itm2 
+
+> llen mylist 
+
+> lrange mylist 0 -1 ---> get all items
+
+> lpop mylist 
+
+> rpop mylist 
+
+> lrem mylist 2 itm1
+
+> lpushx mylist2 item1
+
+> lset mylist 2 itm22
+
+> linsert mylist after|before item1 item3
+
+==============================================
+==============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
