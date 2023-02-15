@@ -89,7 +89,7 @@ ping --> check redis server is running !
 -------------------------------------------
 -------------------------------------------
 
-//hashes : 
+//hashe : 
 ------------
 
 > hset myhash likes 20 
@@ -120,7 +120,7 @@ ping --> check redis server is running !
 ===============================================
 ===============================================
 
-// lists : 
+// list : 
 -----------
 
 > lpush mylist itm1 itm2 
@@ -144,24 +144,230 @@ ping --> check redis server is running !
 ==============================================
 ==============================================
 
+// set : is unique :
+-----------
+
+> sadd names1 ali reza
+
+> smembers names 
+
+> scard names   --> get length 
+
+> sdiff names1 names2   --> return defference 
+
+> sdiffstore diffnames names1 names2
+
+> sinter names1 names2    --> (intersect )
+
+> sinterstore internames names1 names2 
+
+> exmembers names ali   --> (check if exist) 
+
+> smove names1 names2 ali   -- > move ali from names1 to names2
+
+> spop names     --> pop from set 
+
+> srem names ali 
+
+> srandmembers name2
+
+> sunione names1 name2   --> collect 2 set
+
+> sunionstore namesuni name1 names2
+
+
+=====================================================
+=====================================================
+// sorted set : is unique :
+----------------------------
+
+> zadd names 1 ali 2 mina
+
+> zrange names 0 -1 withscore
+
+> zcard names   --> get lenght
+
+> zcount names 1 2
+
+> zincrby names 2 ali
+
+> zrem names ali
+
+> zrank names ali 
+
+> zscore names ali
+
+> zrevrange names 0 -1
+
+> zrevrank names names ali
+
+
+=====================================================
+=====================================================
+
+// broadcasting : 
+-------------------
+
+> subscribe mybr
+
+> publish mybr 'hello ali'
+
+> psubscribe mybr my*    --> listen to multi channel 
+
+
+=====================================================
+=====================================================
+
+// backup : 
+------------
+
+> confid get dir     -->  disk storage 
+
+> config set dir "c:\\redis"
+
+win : dump.rdp 
+
+> bgsave   --> (when redis server is running)
+ 
+> save   
+
+
+
+=====================================================
+=====================================================
+
+// GEO :
+--------------
+
+ > geo add taxi 52.388974 35.69197 Tehran
+  
+ > geopos taxi1 Tehran
+ 
+ > geopos taxi1 Tehran Babol
+ 
+ > geodist taxi1 Tahran Bobol km|m
+ 
+ > georadius taxi1 52.388974 35.69197 50 km withdist withcoord
+ 
+=====================================================
+=====================================================
+
+// hyperloglog :
+--------------------
+
+> pfadd name ali reza 
+
+> pfcount name  
+
+> pfmerge name3 name2
+
+=====================================================
+=====================================================
+
+// transactions : 
+-----------------------
+
+> multi 
+
+> set num 1
+
+> incr num
+
+> incr num 
+
+> decr num
+
+> exec
+
+> discard --> cancel transaction
+
+=====================================================
+=====================================================
+
+// security :
+-----------------
+
+> config get requirepass
+
+> config set requirepass "123"
+
+> auth 123 
 
 
 
 
 
 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
+redis :
+
+sudo apt install redis
 
 
+--------------------------------
+redis-server  {port : 6379}
 
+redis-cli
 
+> SET name kyle
 
+> GEt name 
 
+> DEL name
 
+> EXISTS name
 
+> KEYS *     ( get all the keys )
+ 
+> flushall  ( remove all the keys )
 
+> clear 
+
+> ttl name  (-2 gone , -1 no ttl )
+
+> expire name 10
+
+> setex name 10 kyle
+
+//  lists :
+//------------------
+> lpush friends john
+ 
+> lrange friends 0 -1  (get all) 
+
+> lpush friends sally
+
+> rpush friends mike
+
+> lpop friends 
+
+> rpop friends 
+
+//  set :
+//------------------
+> SADD hobbies "weight lifting"
+
+> SMEMBERS hobbies (show set info ) 
+
+> SREM hobbies "weight lifting"  (remove)
+
+//  hash :
+//------------------
+
+> HSET person name kyle 
+
+> HGETALL person
+
+> HDEL person age 
+
+> HEXISTS person name (1 or 0)
+
+> 
 
 
 
